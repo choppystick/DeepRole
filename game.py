@@ -392,7 +392,7 @@ if __name__ == "__main__":
     print("failures:", obs["failures"])
     print("phase:", obs["phase"])
     print("rejected_proposals:", obs["rejected_proposals"])
-    print("winner:", obs["winner"])
+    print("winner:", obs["winner"]) 
 
     # ---------------------------------------------------------------------------
     # Debug mode
