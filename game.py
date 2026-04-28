@@ -48,7 +48,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 from itertools import permutations
 from typing import List, Optional, Tuple
-from random import random
+import random
  
  
 # ---------------------------------------------------------------------------
@@ -332,7 +332,6 @@ def new_game(assignment: Optional[Tuple[Role, ...]] = None,
 # ---------------------------------------------------------------------------
  
 if __name__ == "__main__":
-    import random
     rng = random.Random(0)
     
     g = new_game(rng=rng)
