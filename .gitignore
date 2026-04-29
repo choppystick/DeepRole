@@ -3,6 +3,7 @@ venv/
 .venv/
 env/
 ENV/
+*.egg-info/
 
 # Python bytecode and caches
 __pycache__/
