@@ -46,3 +46,27 @@ def consistency_mask(observation: dict) -> np.ndarray:
                 mask[a_idx] = False
 
     return mask
+
+def print_consistency_mask(mask, observation=None):
+    print(f"Consistent assignments: {mask.sum()} / {len(mask)}\n")
+    print(f"{'idx':<5} {'Seat0':<12} {'Seat1':<12} {'Seat2':<12} {'Seat3':<12} {'Seat4':<12} {'Evil seats'}")
+    print("-" * 85)
+    for a_idx, (rho, valid) in enumerate(zip(ASSIGNMENTS, mask)):
+        if not valid:
+            continue
+        roles = [r.name for r in rho]
+        evils = sorted(evil_indices(rho))
+        print(
+            f"{a_idx:<5} "
+            f"{roles[0]:<12} {roles[1]:<12} {roles[2]:<12} "
+            f"{roles[3]:<12} {roles[4]:<12} {evils}"
+        )
+        
+# from game import Role, new_game
+# from assignments import ASSIGNMENTS, evil_indices
+# from scenarios import make_obs_with_mission
+# rho = (Role.LS, Role.LS, Role.MERLIN, Role.DS, Role.ASSASSIN)
+# obs = make_obs_with_mission(team=(1,3,4), fails=2, assignment=rho, round_idx=1)
+# mask = consistency_mask(obs)
+
+# print_consistency_mask(mask)
