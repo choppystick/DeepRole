@@ -142,6 +142,3 @@ def fmt_key(key: tuple) -> str:
 def fmt_rho(rho: tuple) -> str:
     """Print assignment as seat->role mapping."""
     return "  ".join(f"s{i}:{r.name[:3]}" for i, r in enumerate(rho))
-
-# for p in range(NUM_PLAYERS):
-#     print_info_sets(p)

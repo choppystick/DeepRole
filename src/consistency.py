@@ -68,5 +68,3 @@ def print_consistency_mask(mask, observation=None):
 # rho = (Role.LS, Role.LS, Role.MERLIN, Role.DS, Role.ASSASSIN)
 # obs = make_obs_with_mission(team=(1,3,4), fails=2, assignment=rho, round_idx=1)
 # mask = consistency_mask(obs)
-
-# print_consistency_mask(mask)
