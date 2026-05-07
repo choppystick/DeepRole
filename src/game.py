@@ -1,6 +1,4 @@
 """
-Docstring generated using Claude. Some comments in the code are also added using Claude.
-
 DeepRole
 The Resistance: Avalon, 5-player variant with Merlin + Assassin. 
  
@@ -38,8 +36,6 @@ State is split into:
 For belief tracking and CFR we never want to peek at 'assignment' from
 non-omniscient code paths — the GameState class makes that separation
 explicit by exposing observation() and information_set(player) helpers.
-
-Thanks Claude.
 """
  
 from __future__ import annotations
