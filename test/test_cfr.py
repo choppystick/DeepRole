@@ -135,11 +135,13 @@ def test_mission_three_fails_terminal_spy():
     assert child.winner == "spy"
 
 
-def test_mission_third_success_assassinate_pending():
+def test_mission_third_success_routes_to_assassinate():
+    """Third successful mission no longer routes to a "pending" terminal —
+    it routes to AssassinateState, where the Assassin actually picks."""
+    from src.cfr import AssassinateState
     s = MissionState(round_idx=2, proposer=0, successes=2, failures=0, team=(0, 1, 2))
     child = child_state(s, 0)
-    assert isinstance(child, TerminalState)
-    assert child.winner == "assassinate_pending"
+    assert isinstance(child, AssassinateState)
 
 
 # ---------------------------------------------------------------------------
@@ -312,9 +314,8 @@ def test_cfr_runs_one_iteration_returns_strategy():
     bank = ValueBank()
     solver = CFRSolver(_root_propose_state(), bank)
     avg = solver.solve(n_iters=1, averaging_delay=0)
-    # At least the root proposer's strategy must exist.
-    assert ((), 0) in avg
-    root_sigma = avg[((), 0)]
+    # The root proposer's strategy must exist; root_strategy() abstracts the key format.
+    root_sigma = solver.root_strategy(player=0)
     assert root_sigma.shape == (15, 10)  # 15 info-sets × 10 teams
     np.testing.assert_allclose(root_sigma.sum(axis=-1), np.ones(15), atol=1e-9)
 
